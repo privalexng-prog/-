@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>hkgames.fun — Tiny Browser Games & Web Experiments</title>
+  <script>
+    // Auto-fix missing trailing slash on GitHub Pages (e.g. / - -> /-/)
+    if (!location.pathname.endsWith('/') && !location.pathname.endsWith('.html') && location.protocol.startsWith('http')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&family=Plus+Jakarta+Sans:wght@500;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
@@ -56,7 +62,6 @@
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Top Bar */
     .topbar {
       width: 100%;
       max-width: 1040px;
@@ -96,7 +101,6 @@
       transform: scale(1.04);
     }
 
-    /* Hero Header */
     header {
       text-align: center;
       max-width: 620px;
@@ -124,7 +128,6 @@
       line-height: 1.5;
     }
 
-    /* Category Filter Pills */
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -155,7 +158,6 @@
       color: var(--pill-active-text);
     }
 
-    /* Game Grid */
     .game-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -192,7 +194,6 @@
       transform: translateY(-3px);
     }
 
-    /* Custom Illustrated Thumbnails */
     .thumb {
       height: 175px;
       width: 100%;
@@ -222,7 +223,6 @@
       background: #16a34a;
     }
 
-    /* Card 1 Art: MTR North Point Tunnel */
     .art-mtr {
       background: linear-gradient(180deg, #b91c1c 0%, #991b1b 100%);
       background-image:
@@ -272,7 +272,6 @@
       border-top: 2px solid #111;
     }
 
-    /* Card 2 Art: Mystery ??? */
     .art-mystery {
       background: repeating-linear-gradient(
         -45deg,
@@ -296,7 +295,6 @@
       user-select: none;
     }
 
-    /* Card Content */
     .card-body {
       padding: 20px 22px 22px;
       display: flex;
@@ -342,7 +340,6 @@
       transform: translateX(4px);
     }
 
-    /* Footer */
     footer {
       margin-top: 64px;
       text-align: center;
@@ -387,7 +384,6 @@
 </head>
 <body>
 
-  <!-- Top Utility Bar -->
   <div class="topbar">
     <span class="brand-tag">MADE IN HK 🇭🇰</span>
     <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">
@@ -395,13 +391,11 @@
     </button>
   </div>
 
-  <!-- Main Header -->
   <header>
     <h1>hkgames<span>.fun</span></h1>
     <p>Tiny browser games, Hong Kong commuter nightmares & weird interactive experiments.</p>
   </header>
 
-  <!-- Filter Pills -->
   <div class="filters">
     <button class="filter-btn active" data-filter="all">All Games</button>
     <button class="filter-btn" data-filter="playable">Playable Now</button>
@@ -409,11 +403,10 @@
     <button class="filter-btn" data-filter="soon">???</button>
   </div>
 
-  <!-- Game Grid -->
   <main class="game-grid" id="gameGrid">
 
-    <!-- GAME 1: MTR TRANSFER SURVIVAL (LIVE) -->
-    <a href="./mtr-transfer-survival/" class="game-card" data-tags="playable hk">
+    <!-- GAME 1: MTR TRANSFER SURVIVAL (Direct link to index.html) -->
+    <a href="./mtr-transfer-survival/index.html" class="game-card" data-tags="playable hk">
       <div class="thumb art-mtr">
         <span class="badge new">16-BIT • LIVE</span>
         <div class="mtr-sign">
@@ -454,7 +447,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <a href="#" class="coffee-link" onclick="alert('Tip: Replace this link with your Buy Me a Coffee or PayMe link!'); return false;">
       ☕ Buy the dev a 7-Café Latte
@@ -463,7 +455,6 @@
   </footer>
 
   <script>
-    // Dark / Light Mode Toggle with localStorage persistence
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const themeLabel = document.getElementById('themeLabel');
@@ -483,7 +474,6 @@
       setTheme(current === 'dark' ? 'light' : 'dark');
     });
 
-    // Category Filter Logic
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.game-card');
 
@@ -504,7 +494,6 @@
       });
     });
 
-    // Playful feedback when clicking the ??? mystery card
     function wiggleCard(el) {
       el.classList.remove('shake');
       void el.offsetWidth;
