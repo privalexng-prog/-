@@ -5,5 +5,11 @@
   "assets": {
     "directory": "./",
     "binding": "ASSETS"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "LEADERBOARD_KV",
+      "id": "cbf8835c79da449fa3fb044acae5b1b6"
+    }
+  ]
 }
